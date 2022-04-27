@@ -133,7 +133,7 @@ else {
     setcookie('biography_error', '', 100000);
   }
   
-$fio=$_POST['fio'];
+$fio=$_POST['name'];
 $email=$_POST['email'];
 $date=$_POST['date'];
 $bio=$_POST['biography'];
