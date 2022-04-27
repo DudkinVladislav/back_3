@@ -37,7 +37,9 @@ if (!empty($messages)) {
 	<form action="" method="POST">
 		Имя:
 	<br>
-      <input type="text" name="name" <?php if ($errors['name']) {print 'class="error"';} ?> value="<?php print $values['name']; ?>" />
+      <input type="text" name="name" 
+	     <?php if ($errors['name']) {print 'class="error"';} ?>
+	     value="<?php print $values['name']; ?>" />
         <br> email:<br>
 	<input type="email" name="email" <?php if ($errors['email']) {print 'class="error"';} ?> value="<?php print $values['email']; ?>" />
         <br>Дата рождения:<br>
