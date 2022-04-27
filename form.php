@@ -37,14 +37,12 @@ if (!empty($messages)) {
 	<form action="" method="POST">
 		Имя:
 	<br>
-      <input name="fio" <?php if ($errors['fio']) {print 'class="error"';} ?> value="<?php print $values['fio']; ?>" />
+      <input name="name" <?php if ($errors['name']) {print 'class="error"';} ?> value="<?php print $values['name']; ?>" />
          email:<br>
 	<input name="email" <?php if ($errors['email']) {print 'class="error"';} ?> value="<?php print $values['email']; ?>" />
         Дата рождения:<br>
 	<input name="date" <?php if ($errors['date']) {print 'class="error"';} ?> value="<?php print $values['date']; ?>" />
-	<br>
-	Пол:
-	<br> 
+	Пол:<br> 
       	<div <?php if ($errors['pol']) {print 'class="error"';} ?>>
         <input type="radio" name="pol" value="man" <?php if ($values['pol'] == 'man') {print 'checked';} ?>> Мужской
         <input type="radio" name="pol" value="woman" <?php if ($values['pol'] == 'woman') {print 'checked';} ?>> Женский
@@ -63,12 +61,11 @@ if (!empty($messages)) {
           <option value="immortality">Бессмертие</option>
 		<option value="immortality" <?php if (in_array("immortality", $values['abilities'])) {print 'selected';} ?>>Бессмертие</option>
 		<option value="intangibility" <?php if (in_array("intangibility", $values['abilities'])) {print 'selected';} ?>>Прохождение сквозь стены</option>
-		<option value="levitation" <?php if (in_array("levitation", $values['ability'])) {print 'selected';} ?>>Левитация</option>
+		<option value="levitation" <?php if (in_array("levitation", $values['abilities'])) {print 'selected';} ?>>Левитация</option>
         </select>
 	<br>
 	Биография:
 	<br>
-	<textarea name="biography" rows="5" id="pole"><?php print $values['bio']; ?></textarea>
         <textarea name="biography" style="margin: 0px; height: 69px; width: 180px;"><?php print $values['biography']; ?></textarea>
       	</label>
 	<br>
