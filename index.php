@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
  $errors['date'] = !empty($_COOKIE['date_error']);
  $errors['pol'] = !empty($_COOKIE['pol_error']);
  $errors['parts'] = !empty($_COOKIE['parts_error']);
+ $errors['biography']=!empty($_COOKIE['biography_error']);
 // Выдаем сообщения об ошибках.
  if ($errors['name']) {
     // Удаляем куку, указывая время устаревания в прошлом.
