@@ -9,85 +9,75 @@ background-color:#ff9911;}
 header {display:flex;
 flex-direction: column;
 text-align: center;
-background-color:#dc3545}</style>
-    <title>Задание 3</title>
+background-color:#dc3545}
+	  /* Сообщения об ошибках и поля с ошибками выводим с красным бордюром. */
+.error {
+	border: 2px solid red;
+	}
+	  </style>
+    <title>Задание 4</title>
   </head>
   <body>
 <header>
 <p>Здравствуйте, заполните анкету, чтобы мы могли сохранить ваши данные.</p>
-<p>Пожалуйста, указывайте только достоверную информацию.</p>
+<p>Пожалуйста, сообщайте только проверенную информацию.</p>
 </header>
+	  <?php
+if (!empty($messages)) {
+  print('<div id="messages">');
+  // Выводим все сообщения.
+  foreach ($messages as $message) {
+    print($message);
+  }
+  print('</div>');
+}
+	  // Далее выводим форму отмечая элементы с ошибками классом error
+// и задавая начальные значения элементов ранее сохраненными.
+?>
 	<form action="" method="POST">
-      <label>
-        Имя:
+		Имя:
 	<br>
-        <input name="fio" value="Введите имя">
-	</label>
-	<br>
-      	<label>
+      <input name="fio" <?php if ($errors['fio']) {print 'class="error"';} ?> value="<?php print $values['fio']; ?>" />
          email:<br>
-        <input name="email" value="Введите свой email" type="email">
-     	</label>
-	<br>
-      	<label>
+	<input name="email" <?php if ($errors['email']) {print 'class="error"';} ?> value="<?php print $values['email']; ?>" />
         Дата рождения:<br>
-        <input name="date" value="2022-01-31" type="date">
-      	</label>
+	<input name="date" <?php if ($errors['date']) {print 'class="error"';} ?> value="<?php print $values['date']; ?>" />
 	<br>
 	Пол:
 	<br> 
-      	<label>
-	  <input type="radio" checked="checked" name="pol" value="woman">
-        Женский
-	</label>
-	<br>
-        <label>
-	  <input type="radio" name="pol" value="man">
-        Мужской
-	</label>
-	<br>
+      	<div <?php if ($errors['pol']) {print 'class="error"';} ?>>
+        <input type="radio" name="pol" value="man" <?php if ($values['pol'] == 'man') {print 'checked';} ?>> Мужской
+        <input type="radio" name="pol" value="woman" <?php if ($values['pol'] == 'woman') {print 'checked';} ?>> Женский
+      </div>
+		<br>
 	Количество конечностей:
-	<br>
-	<label>
-	  <input type="radio" checked="checked" name="parts" value="1">
-        1 конечность
-	</label>
-	<label>
-	  <input type="radio" checked="checked" name="parts" value="2">
-        2 конечности
-	</label>
-	<label>
-	  <input type="radio" checked="checked" name="parts" value="3">
-        3 конечности
-	</label>
-	<label>
-	  <input type="radio" name="parts" value="4">
-        4 конечности
-	</label>
-	<br>
-     	<label>
+		 <div <?php if ($errors['parts']) {print 'class="error"';} ?>>
+	<input type="radio" name="parts" value="1" <?php if ($values['parts'] == '1') {print 'checked';} ?>> 1 конечность
+        <input type="radio" name="parts" value="2" <?php if ($values['parts'] == '2') {print 'checked';} ?>> 2 конечности
+        <input type="radio" name="parts" value="3" <?php if ($values['parts'] == '3') {print 'checked';} ?>> 3 конечности
+        <input type="radio" name="parts" value="4" <?php if ($values['parts'] == '4') {print 'checked';} ?>> 4 конечности 
+      </div>
 	Сверхспособности:
 	<br>
         <select name="abilities[]" multiple="true">
           <option value="immortality">Бессмертие</option>
-          <option value="intangibility">Прохождение сквозь стены</option>
-          <option value="levitation">Левитация</option>
+		<option value="immortality" <?php if (in_array("immortality", $values['abilities'])) {print 'selected';} ?>>Бессмертие</option>
+		<option value="intangibility" <?php if (in_array("intangibility", $values['abilities'])) {print 'selected';} ?>>Прохождение сквозь стены</option>
+		<option value="levitation" <?php if (in_array("levitation", $values['ability'])) {print 'selected';} ?>>Левитация</option>
         </select>
-      	</label>
 	<br>
-	<label>
 	Биография:
 	<br>
-        <textarea name="biography" style="margin: 0px; height: 69px; width: 180px;">Расскажите о своей жизни</textarea>
+	<textarea name="biography" rows="5" id="pole"><?php print $values['bio']; ?></textarea>
+        <textarea name="biography" style="margin: 0px; height: 69px; width: 180px;"><?php print $values['biography']; ?></textarea>
       	</label>
 	<br>
       	<label>
-	<input type="checkbox" checked="checked" name="check">
-       С контрактом ознакомлен(а)
-	</label>
-	<br>
-      	<input type="submit" value=Отправить>
+    	<input id="checkbox" type="checkbox" name="checkbox" onchange="document.getElementById('submit').disabled = !this.checked;" /> 
+		С контрактом ознакомлен(а)
+		<br>
+		</label>
+		<input type="submit" disabled="disabled" name="submit" id="submit" value="Отправить" />
+		<br>
     </form>
-<img src="./img/create.png" alt="creation">
-<img src="./img/rows.png" alt="rows">
 </body></html>
