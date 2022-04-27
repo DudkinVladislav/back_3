@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 // Складываем предыдущие значения полей в массив, если есть.
   $values = array();
-  $values['fio'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
+  $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
   $values['email'] = empty($_COOKIE['email_value']) ? '' : $_COOKIE['email_value'];
   $values['date'] = empty($_COOKIE['date_value']) ? '' : $_COOKIE['date_value'];
   $values['pol'] = empty($_COOKIE['pol_value']) ? '' : $_COOKIE['pol_value'];
@@ -133,13 +133,12 @@ else {
     setcookie('biography_error', '', 100000);
   }
   
-$fio=$_POST['name'];
+$name=$_POST['name'];
 $email=$_POST['email'];
 $date=$_POST['date'];
 $bio=$_POST['biography'];
 $pol=$_POST['pol'];
 $parts=$_POST['parts'];
-$powers= implode(",",$_POST['abilities']);
 
   // Сохранение в базу данных.
 
