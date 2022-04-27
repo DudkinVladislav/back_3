@@ -70,7 +70,7 @@ else{
 
 // Проверяем ошибки.
 $errors = FALSE;
-if ((empty($_POST['name']))||($_POST['name'].match(^[а-яА-ЯёЁa-zA-Z]+$)==false)) {
+if ((empty($_POST['name']))||($_POST['name'].match([а-яА-ЯёЁa-zA-Z]+$)==false)) {
  setcookie('name_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
 }
